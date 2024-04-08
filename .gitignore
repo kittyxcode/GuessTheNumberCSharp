@@ -1,0 +1,20 @@
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de usuario
+*.user
+*.suo
+
+# Directorio de caché de NuGet
+packages/
+
+# Archivos de proyecto específicos de Visual Studio
+*.vs
+
+# Archivos de respaldo de Visual Studio
+Backup*/
+*.bak
+
+# Carpeta temporal de caché
+.vscode/
