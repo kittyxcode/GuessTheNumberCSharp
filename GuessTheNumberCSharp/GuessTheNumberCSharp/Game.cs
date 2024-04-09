@@ -35,6 +35,7 @@ namespace GuessTheNumberCSharp
             AIPlayer = new AIPlayer("Computina");
             ShiftCounter = 0;
             GameStart(HumanPlayer, AIPlayer);
+            Console.ReadKey();
         }
 
 
@@ -78,6 +79,25 @@ namespace GuessTheNumberCSharp
         }
 
 
+        private void PrintGameStatistics(Player player)
+        {
+            Console.WriteLine("Estadisticas del juego:");
+            Console.WriteLine($"Turnos Totales Partida: {shiftCounter}");
+            if (player is AIPlayer)
+            {
+                Console.WriteLine($"Turnos {((AIPlayer)player).Name}: {((AIPlayer)player).ListGuess.Count}");
+                Console.WriteLine($"Nros Intentados por {((AIPlayer)player).Name}: ");
+                Console.WriteLine(string.Join(", ", ((AIPlayer)player).ListGuess));
+            }
+            else
+            {
+                Console.WriteLine($"Turnos {((HumanPlayer)player).Name}: {((HumanPlayer)player).ListGuess.Count}");
+                Console.WriteLine($"Nros Intentados por {((HumanPlayer)player).Name}: ");
+                Console.WriteLine(string.Join(", ", ((HumanPlayer)player).ListGuess));
+            }
+        }
+
+
 
         private void GameStart(HumanPlayer humanPlayer, AIPlayer aIPlayer)
         {
@@ -101,7 +121,16 @@ namespace GuessTheNumberCSharp
                     initialShift++;
                 }
             }
-
+            if (initialShift % 2 == 0)
+            {
+                Console.WriteLine($"{humanPlayer.Name} Ganaste!!!");
+                PrintGameStatistics(humanPlayer);
+            }
+            else
+            {
+                Console.WriteLine($"{humanPlayer.Name} Perdiste u.u y gano {aIPlayer.Name}");
+                PrintGameStatistics(aIPlayer);
+            }
 
         }
 
