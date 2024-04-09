@@ -79,6 +79,7 @@ namespace GuessTheNumberCSharp
         }
 
 
+        //muestra las estadisticas del juego
         private void PrintGameStatistics(Player player)
         {
             Console.WriteLine("Estadisticas del juego:");
@@ -98,6 +99,18 @@ namespace GuessTheNumberCSharp
         }
 
 
+        private string GetClueMessage(int number)
+        {
+            if (number < WinningNumber)
+            {
+                return "El numero es mas alto";
+            }
+            else
+            {
+                return "El numero es mas bajo";
+            }
+        }
+
 
         private void GameStart(HumanPlayer humanPlayer, AIPlayer aIPlayer)
         {
@@ -112,6 +125,10 @@ namespace GuessTheNumberCSharp
                     shiftCounter++;
                     initialShift++;
                     Console.WriteLine($"{aIPlayer.Name} elije: {iaPlayerNumber}");
+                    if (!finishGame)
+                    {
+                        Console.WriteLine(GetClueMessage(iaPlayerNumber));
+                    }
                 }
                 else
                 {
@@ -119,6 +136,10 @@ namespace GuessTheNumberCSharp
                     finishGame = CheckWinner(humanPlayerNumber);
                     shiftCounter++;
                     initialShift++;
+                    if (!finishGame)
+                    {
+                        Console.WriteLine(GetClueMessage(humanPlayerNumber));
+                    }
                 }
             }
             if (initialShift % 2 == 0)
