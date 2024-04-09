@@ -24,7 +24,7 @@ namespace GuessTheNumberCSharp
 
 
 
-
+        //constructor
         public Game()
         {
             random = new Random();
@@ -98,16 +98,22 @@ namespace GuessTheNumberCSharp
             }
         }
 
-
+        //muestra mensaje de ayuda para saber que tan cerca estoy del numero
         private string GetClueMessage(int number)
         {
             if (number < WinningNumber)
             {
-                return "El numero es mas alto";
+                if (WinningNumber - number <= 5)
+                    return "El numero es mas alto, estas muy cerca!";
+                else
+                    return "El numero es mas alto";
             }
             else
             {
-                return "El numero es mas bajo";
+                if (number - WinningNumber <= 5)
+                    return "El numero es mas bajo, estas muy cerca!";
+                else
+                    return "El numero es mas bajo";
             }
         }
 
@@ -141,6 +147,7 @@ namespace GuessTheNumberCSharp
                         Console.WriteLine(GetClueMessage(humanPlayerNumber));
                     }
                 }
+                Console.WriteLine("-----------------------------------");
             }
             if (initialShift % 2 == 0)
             {
