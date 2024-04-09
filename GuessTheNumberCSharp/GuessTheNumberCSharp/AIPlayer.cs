@@ -7,17 +7,27 @@ namespace GuessTheNumberCSharp
         private Random random;
         public Random Random { get => random; set => random = value; }
 
+        //campo y propiedad que almacena los intentos de adivinar el numero
+        private List<int> totalGuess;
+        public List<int> TotalGuess { get => totalGuess; set => totalGuess = value; }
+
         //constructor
         public AIPlayer(string name) : base(name)
         {
             random = new Random();
+            TotalGuess = new List<int>();
         }
 
-        //metodo sobreescrito
+        //intenta adivinar un numero y lo guarda en la lista de intentos
         public override int MakeGuess()
         {
-            return random.Next(1, 100);
+            int guessNumber = random.Next(1, 101);
+            TotalGuess.Add(guessNumber);
+            return guessNumber;
         }
+
+
+
     }
 }
 

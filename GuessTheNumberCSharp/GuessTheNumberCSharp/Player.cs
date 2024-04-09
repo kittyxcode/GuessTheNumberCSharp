@@ -1,14 +1,13 @@
 ﻿using System;
 namespace GuessTheNumberCSharp
 {
+    public abstract class Player
     /*
-    Características de la clase Player:
+     Características de la clase Player:
     Propiedad que almacena el nombre.
     Propiedad que almacena el último intento realizado por la jugadora.
     Constructor que inicializa el último intento en cero y el nombre según el valor con el que fue instanciado.
     Método que se encarga de hacer la predicción(MakeGuess()) solicitando por terminal un número y validando que sea correcto.*/
-
-    public abstract class Player
 
     {
         //campo y propiedad nombre
@@ -26,8 +25,10 @@ namespace GuessTheNumberCSharp
             listGuess = new List<int>();
         }
 
-        //metodo abstracto
+
         public abstract int MakeGuess();
+
+
     }
 }
 
