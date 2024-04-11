@@ -27,9 +27,11 @@ namespace GuessTheNumberCSharp
         //constructor
         public Game()
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             random = new Random();
             WinningNumber = random.Next(1, 101);
-            Console.WriteLine(winningNumber);
+            Console.WriteLine($"Numero ganador: {WinningNumber}");
+            Console.WriteLine();
             string humanPlayerName = AssignHumanName();
             HumanPlayer = new HumanPlayer(humanPlayerName);
             AIPlayer = new AIPlayer("Computina");
@@ -51,6 +53,7 @@ namespace GuessTheNumberCSharp
                 {
                     Console.WriteLine("Escribe tu nombre de jugadora: ");
                     name = Console.ReadLine();
+                    Console.WriteLine("\n");
                 }
 
             }
@@ -82,17 +85,18 @@ namespace GuessTheNumberCSharp
         //muestra las estadisticas del juego
         private void PrintGameStatistics(Player player)
         {
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Estadisticas del juego:");
             Console.WriteLine($"Turnos Totales Partida: {shiftCounter}");
             if (player is AIPlayer)
             {
-                Console.WriteLine($"Turnos {((AIPlayer)player).Name}: {((AIPlayer)player).ListGuess.Count}");
+                Console.WriteLine($"Turnos de {((AIPlayer)player).Name}: {((AIPlayer)player).ListGuess.Count}");
                 Console.WriteLine($"Nros Intentados por {((AIPlayer)player).Name}: ");
                 Console.WriteLine(string.Join(", ", ((AIPlayer)player).ListGuess));
             }
             else
             {
-                Console.WriteLine($"Turnos {((HumanPlayer)player).Name}: {((HumanPlayer)player).ListGuess.Count}");
+                Console.WriteLine($"Turnos de {((HumanPlayer)player).Name}: {((HumanPlayer)player).ListGuess.Count}");
                 Console.WriteLine($"Nros Intentados por {((HumanPlayer)player).Name}: ");
                 Console.WriteLine(string.Join(", ", ((HumanPlayer)player).ListGuess));
             }
@@ -134,6 +138,7 @@ namespace GuessTheNumberCSharp
                     if (!finishGame)
                     {
                         Console.WriteLine(GetClueMessage(iaPlayerNumber));
+                        Console.WriteLine();
                     }
                 }
                 else
@@ -145,17 +150,20 @@ namespace GuessTheNumberCSharp
                     if (!finishGame)
                     {
                         Console.WriteLine(GetClueMessage(humanPlayerNumber));
+                        Console.WriteLine();
                     }
                 }
                 Console.WriteLine("-----------------------------------");
             }
             if (initialShift % 2 == 0)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine($"{humanPlayer.Name} Ganaste!!!");
                 PrintGameStatistics(humanPlayer);
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine($"{humanPlayer.Name} Perdiste u.u y gano {aIPlayer.Name}");
                 PrintGameStatistics(aIPlayer);
             }
