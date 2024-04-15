@@ -2,14 +2,14 @@
 using GuessTheNumberCSharp;
 
 [TestClass]
-public class IAPlayerTests
+public class HumanPlayerTests
 {
     [TestMethod]
     public void MakeGuessTestNumber()
     {
         // Arrange
         var random = new Random();
-        GuessTheNumberCSharp.AIPlayer player = new AIPlayer("Computina");
+        GuessTheNumberCSharp.HumanPlayer player = new HumanPlayer("TestPlayer");
         // Act
         int guess = player.MakeGuess();
 
