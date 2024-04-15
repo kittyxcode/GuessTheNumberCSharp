@@ -29,7 +29,7 @@ namespace GuessTheNumberCSharp
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             random = new Random();
-            WinningNumber = random.Next(1, 101);
+            WinningNumber = random.Next(1, 5);
             Console.WriteLine($"Numero ganador: {WinningNumber}");
             Console.WriteLine();
             string humanPlayerName = AssignHumanName();
