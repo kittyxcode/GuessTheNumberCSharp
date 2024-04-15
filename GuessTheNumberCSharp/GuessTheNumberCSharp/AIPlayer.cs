@@ -17,7 +17,7 @@ namespace GuessTheNumberCSharp
         //intenta adivinar un numero y lo guarda en la lista de intentos
         public override int MakeGuess()
         {
-            int guessNumber = random.Next(1, 5);
+            int guessNumber = random.Next(1, 101);
             ListGuess.Add(guessNumber);
             return guessNumber;
         }

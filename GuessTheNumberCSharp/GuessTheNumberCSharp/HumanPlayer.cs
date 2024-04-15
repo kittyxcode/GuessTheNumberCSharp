@@ -10,10 +10,19 @@ namespace GuessTheNumberCSharp
         public override int MakeGuess()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.WriteLine("Ingresa tu numero: ");
-            var input = Console.ReadLine();
-            int number = Convert.ToInt32(input);
-            ListGuess.Add(number);
+            bool validate = true;
+            int number = 0;
+
+            while (validate)
+            {
+                Console.WriteLine("Ingresa tu numero: ");
+                var input = Console.ReadLine();
+                if (int.TryParse(input, out number) && number >= 1 && number <= 100)
+                {
+                    ListGuess.Add(number);
+                    validate = false;
+                }
+            }
             return number;
         }
     }
