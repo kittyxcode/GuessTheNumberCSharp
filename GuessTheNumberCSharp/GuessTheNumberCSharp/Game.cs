@@ -33,11 +33,13 @@ namespace GuessTheNumberCSharp
             SelectLevel();
             random = new Random();
             WinningNumber = random.Next(1, 101);
-            Console.WriteLine($"Numero ganador: {WinningNumber}");
+            Console.WriteLine($"El numero ganador es: {WinningNumber}");
             Console.WriteLine();
             string humanPlayerName = AssignHumanName();
             HumanPlayer = new HumanPlayer(humanPlayerName);
             AIPlayer = new AIPlayer("Computina");
+            AIPlayer.Level = levelOfDifficulty;
+            AIPlayer.CheatNumber = WinningNumber;
             ShiftCounter = 0;
             GameStart(HumanPlayer, AIPlayer);
             Console.ReadKey();
@@ -149,6 +151,7 @@ namespace GuessTheNumberCSharp
                 {
                     int iaPlayerNumber = aIPlayer.MakeGuess();
                     finishGame = CheckWinner(iaPlayerNumber);
+                    aIPlayer.ListTotalGuess.Add(iaPlayerNumber);
                     shiftCounter++;
                     initialShift++;
                     Console.WriteLine($"{aIPlayer.Name} elije: {iaPlayerNumber}");
@@ -162,6 +165,7 @@ namespace GuessTheNumberCSharp
                 {
                     int humanPlayerNumber = humanPlayer.MakeGuess();
                     finishGame = CheckWinner(humanPlayerNumber);
+                    aIPlayer.ListTotalGuess.Add(humanPlayerNumber);
                     shiftCounter++;
                     initialShift++;
                     if (!finishGame)
@@ -170,7 +174,7 @@ namespace GuessTheNumberCSharp
                         Console.WriteLine();
                     }
                 }
-                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("----------------------------------------------------");
             }
             if (initialShift % 2 == 0)
             {
