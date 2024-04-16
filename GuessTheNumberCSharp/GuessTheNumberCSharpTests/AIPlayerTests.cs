@@ -10,6 +10,7 @@ public class IAPlayerTests
         // Arrange
         var random = new Random();
         GuessTheNumberCSharp.AIPlayer player = new AIPlayer("Computina");
+        player.Level = 1; // Establece el nivel del jugador
         // Act
         int guess = player.MakeGuess();
 
