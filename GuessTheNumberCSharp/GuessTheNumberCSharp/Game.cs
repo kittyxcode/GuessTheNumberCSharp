@@ -22,12 +22,15 @@ namespace GuessTheNumberCSharp
         private int shiftCounter;
         public int ShiftCounter { get => shiftCounter; set => shiftCounter = value; }
 
+        private int levelOfDifficulty;
+        public int LevelOfDifficulty { get => levelOfDifficulty; set => levelOfDifficulty = value; }
 
 
         //constructor
         public Game()
         {
             Console.ForegroundColor = ConsoleColor.DarkYellow;
+            SelectLevel();
             random = new Random();
             WinningNumber = random.Next(1, 101);
             Console.WriteLine($"Numero ganador: {WinningNumber}");
@@ -38,6 +41,20 @@ namespace GuessTheNumberCSharp
             ShiftCounter = 0;
             GameStart(HumanPlayer, AIPlayer);
             Console.ReadKey();
+        }
+
+
+        private void SelectLevel()
+        {
+
+            string key = "";
+            while (levelOfDifficulty < 1 || levelOfDifficulty > 3)
+            {
+                Console.Clear();
+                Console.WriteLine("Selecciona la dificulta: (1)Facil, (2)Normal, (3)Dificil");
+                key = Console.ReadLine();
+                int.TryParse(key, out levelOfDifficulty);
+            }
         }
 
 
